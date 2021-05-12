@@ -1,0 +1,23 @@
+body {
+    overflow: hidden;
+}
+
+p {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+button {
+    font-size: 20px;
+    padding: 10px 30px;
+    cursor: pointer;
+}
+
+.arrowWrap {
+    margin: 1 rem;
+}
+
+.arrowWrap img {
+    transition: transform 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    width: 30%;
+}

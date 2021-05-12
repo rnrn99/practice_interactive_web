@@ -18,6 +18,8 @@ button {
 }
 
 .arrowWrap img {
-    transition: transform 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: transform 2s cubic-bezier(0.530, -0.600, 0.290, 1.650);
     width: 30%;
 }
+
+/* https://matthewlein.com/tools/ceaser 참조 */

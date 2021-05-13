@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,32 +9,36 @@
     <style>
         body {
             transition: all 2.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-            overflow: hidden;
+            overflow-x: hidden;
         }
+
         .nav {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
+
         h1 {
             font-size: 30px;
             font-weight: bold;
             text-align: center;
         }
+
         button {
             font-size: 20px;
             padding: 10px 30px;
             cursor: pointer;
         }
-        section{
+
+        section {
             height: 100vh;
             width: 100vw;
-            border-top: 2px solid rgba(0,0,0,0.5);
+            border-top: 2px solid rgba(0, 0, 0, 0.5);
         }
     </style>
     <script>
-        window.onload = function() {
+        window.onload = function () {
             var prevBtn = document.querySelector(".prevBtn");
             var nextBtn = document.querySelector(".nextBtn");
             var h1 = document.getElementsByTagName("h1")[0];
@@ -48,6 +53,10 @@
                     pageNum--;
                 }
                 pageChange();
+                window.scrollTo({
+                    top: section[pageNum - 1].offsetTop,
+                    behavior: 'smooth'
+                })
             });
 
             nextBtn.addEventListener('click', () => {
@@ -55,29 +64,42 @@
                     pageNum++;
                 }
                 pageChange();
+                window.scrollTo({
+                    top: section[pageNum - 1].offsetTop,
+                    behavior: 'smooth'
+                })
             })
 
             function pageChange() {
                 h1.innerHTML = pageNum + " 페이지 입니다.";
                 document.getElementsByTagName("body")[0].style.background = bgColorArr[pageNum - 1];
-
-                window.scrollTo({
-                    top: section[pageNum - 1].offsetTop,
-                    behavior: 'smooth'
-                })
             }
 
             pageChange();
+
+            window.addEventListener("scroll", function (event) {
+                var yOffset = this.scrollY;
+                var height = window.innerHeight / 3;
+
+                for(var i = 0; i < totalNum; i++){
+                    if(yOffset > section[i].offsetTop - height && yOffset < section[i].offsetTop - height + section[i].offsetHeight){
+                        pageNum = i + 1;
+                        break;
+                    }
+                }
+                pageChange();
+            })
         }
     </script>
 </head>
+
 <body>
     <div class="nav">
         <button type="button" class="prevBtn">PREV</button>
         <button type="button" class="nextBtn">NEXT</button>
         <h1></h1>
     </div>
-    
+
     <section>
         <h2>page 1</h2>
     </section>
@@ -94,4 +116,5 @@
         <h2>page 4</h2>
     </section>
 </body>
+
 </html>

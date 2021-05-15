@@ -1,0 +1,88 @@
+body {
+    overflow-x: hidden;
+    background-color: #fff;
+}
+
+section {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+section.active .imageWrap img {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0,0);
+}
+
+.innerWrap {
+    position: relative;
+    z-index: 100;
+    padding: 60px;
+    width: 340px;
+    margin-top: 50px;
+    background-color: rgba(255,255,255,0.7);
+}
+
+.imageWrap {
+    position: fixed;
+    width: 70%;
+    right: 5%;
+    top: 35%;
+}
+
+.imageWrap img {
+    position: absolute;
+    width: 400px;
+    transition: all 1s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    transform: translate(-100px, -150px) rotate(-10deg);
+}
+
+.imageWrap img:nth-child(2) {
+    left: 400px;
+    top: 100px;
+    transition-delay: .2s;
+    transform: translate(100px, 150px) rotate(-10deg);
+}
+
+h1 {
+    color: #000;
+    text-align: center;
+    padding-top: 40vh;
+    font-size: 60px;
+}
+
+h2 {
+    color: #333;
+    font-size: 40px;
+}
+
+p {
+    color: #000;
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.pointWrap {
+    position: fixed;
+    top: 40%;
+    right: 3vw;
+    z-index: 100;
+}
+
+.pointWrap li {
+    list-style: none;
+    width: 12px;
+    height: 12px;
+    margin-top: 15px;
+    cursor: pointer;
+    background-color: #999;
+    border-radius: 50%;
+    transition: background .3s ease-out;
+}
+
+.pointWrap li.active {
+    background-color: #000;
+}

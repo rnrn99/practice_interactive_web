@@ -13,20 +13,12 @@ window.onload = function () {
     var totalNum = album.length;
 
     prevBtn.addEventListener("click", () => {
-        if (pageNum > 0) {
-            pageNum--;
-        } else {
-            pageNum = totalNum - 1;
-        }
+        prevPage();
         pageChange();
     });
 
     nextBtn.addEventListener("click", () => {
-        if (pageNum < totalNum - 1) {
-            pageNum++;
-        } else {
-            pageNum = 0;
-        }
+        nextPage();
         pageChange();
     })
 
@@ -40,6 +32,22 @@ window.onload = function () {
     }
 
     pageChange();
+
+    function prevPage() {
+        if (pageNum > 0) {
+            return pageNum--;
+        } else {
+            pageNum = totalNum - 1;
+        }
+    }
+
+    function nextPage() {
+        if (pageNum < totalNum - 1) {
+            pageNum++;
+        } else {
+            pageNum = 0;
+        }
+    }
 
     function pageChange() {
         contentWrap.style.background = "linear-gradient(120deg," + bgArr[pageNum][0] + "," + bgArr[pageNum][1] + ")";
@@ -55,5 +63,48 @@ window.onload = function () {
             }
         }
         diskInner[pageNum].style.background = bgArr[pageNum][0];
+    }
+
+    function checkMobile() {
+        var mobileKeywords = new Array('Android', 'iPhone', 'iPod', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
+
+        for (var i in mobileKeywords) {
+            if (navigator.userAgent.match(mobileKeywords[i]) != null) return true;
+        }
+        return false;
+    }
+
+    if (checkMobile()) {
+        contentWrap.addEventListener('touchstart', pageTouch, false);
+        contentWrap.addEventListener('touchend', pageTouch, false);
+    }
+
+    var start_x = 0;
+    var end_x = 0;
+
+    function pageTouch(event) {
+        var type = null;
+
+        switch (event.type) {
+            case 'touchstart':
+                type = "mousedown";
+                start_x = event.changedTouches[0].clientX;
+                break;
+            case 'touchend':
+                type = "mouseup";
+                end_x = event.changedTouches[0].clientX;
+
+                var move_x = end_x - start_x;
+
+                if (Math.abs(move_x) > 70) {
+                    if (move_x > 0) {
+                        prevPage();
+                    } else {
+                        nextPage();
+                    }
+                }
+                pageChange();
+                break;
+        }
     }
 }

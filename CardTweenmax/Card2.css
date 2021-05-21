@@ -67,6 +67,6 @@ section .cardItem:nth-child(5) {
   transition: all 0.3s ease-out;
 }
 
-.btnWrap button:hover {
+.btnWrap button:hover, .btnWrap button.active {
   background-color: #970000;
 }

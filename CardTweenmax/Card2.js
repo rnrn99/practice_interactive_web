@@ -56,7 +56,9 @@ window.onload = function () {
                     TweenMax.to(item, 1, {
                         top: Height / 2 - i * 50,
                         left: Width / 2 + (i * 60 - 200),
-                        rotation: 0,
+                        rotationX: 0,
+                        rotationY: 0,
+                        rotationZ: 0,
                         ease: Power3.easeInOut,
                         delay: i * 0.2
                     });
@@ -64,17 +66,45 @@ window.onload = function () {
             break;
 
             case 1:
-                cards.forEach((item, i) => {
+                cards.forEach((item) => {
                     TweenMax.to(item, 1, {
-                        top: Math.random() * (Height/1.5),
-                        left: Math.random() * (Width/1.5),
-                        rotationX: "random(-60, 60)"
-                    })
-                })
+                        top: Math.random() * (Height / 1.5),
+                        left: Math.random() * (Width / 1.5),
+                        rotationX: "random(-60, 60)",
+                        rotationY: "random(-60, 60)",
+                        rotationZ: "random(-90, 90)",
+                        ease: Power4.easeInOut,
+                        delay: "random(0, 0.5)"
+                    });
+                });
             break;
 
             case 2:
-                console.log("2");
+                cards.forEach((item, i) => {
+                    TweenMax.to(item, 1, {
+                        top: Height / 2 + i * 30 - 100,
+                        left: Width / 2 - i * 80,
+                        rotationX: 0,
+                        rotationY: -10 * i,
+                        rotationZ: 20 * i,
+                        ease: Power3.easeInOut,
+                        delay: i * 0.2
+                    });
+                });
+            break;
+
+            case 3:
+                cards.forEach((item) => {
+                    TweenMax.to(item, 1, {
+                        top: Math.random() * (Height / 1.3),
+                        left: Math.random() * (Width / 1.3),
+                        rotationX: 0,
+                        rotationY: 0,
+                        rotationZ: 0,
+                        ease: Power3.easeInOut,
+                        delay: "random(0,0.5)"
+                    })
+                })
             break;
         }
     }

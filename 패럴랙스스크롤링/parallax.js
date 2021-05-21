@@ -39,7 +39,7 @@ window.onload = function() {
         rotateY: 0,
         delay: 2.2,
         ease: Power3.easeInOut
-    })
+    });
 
     topBtn.addEventListener('click', () => {
         TweenMax.to(window, 1.5, {

@@ -2,6 +2,7 @@ window.onload = function() {
     var starBg = document.querySelector('.starBg');
     var title = document.querySelector('.title');
     var topBtn = document.querySelector('.topBtn');
+    var li = document.getElementsByTagName('li');
     var yOffset = this.scrollY;
 
     window.addEventListener('scroll', () => {
@@ -27,20 +28,23 @@ window.onload = function() {
         ease: Power3.easeInOut
     });
 
-
     TweenMax.from(".bottom", 2.5, {
         scale: 0.7,
         y: 100,
         delay: 2.2,
         ease: Power3.easeInOut
     });
-
-    TweenMax.to("li", 2.5, {
-        rotateY: 0,
-        delay: 2.5,
-        ease: Power3.easeInOut,
-    });
-
+    
+    TweenMax.set("ul", {perspective: 400});
+    
+    for(var i = 0; i< li.length; i++){
+        TweenMax.to(li[i], 2.5, {
+            rotationY: 0,
+            delay: 2.5,
+            ease: Power3.easeInOut
+        })
+    }
+    
     topBtn.addEventListener('click', () => {
         TweenMax.to(window, 1.5, {
             scrollTo: {

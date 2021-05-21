@@ -48,10 +48,6 @@ section.bottom .contentWrap {
   max-width: 700px;
 }
 
-section.bottom .contentWrap ul {
-  perspective: 400px;
-}
-
 section.bottom .contentWrap ul li {
   display: inline-block;
   margin: 0 2%;

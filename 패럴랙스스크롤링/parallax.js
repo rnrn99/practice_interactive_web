@@ -1,10 +1,11 @@
+
 window.onload = function() {
     var starBg = document.querySelector('.starBg');
     var title = document.querySelector('.title');
     var topBtn = document.querySelector('.topBtn');
-    var li = document.getElementsByTagName('li');
+    var li = document.querySelectorAll('li');
     var yOffset = this.scrollY;
-
+    
     window.addEventListener('scroll', () => {
         starBg.style.transform = "translateY(" + (-yOffset)/3 + "px)";
         title.style.transform = "translateY(" + yOffset/1.7 + "px)";       
@@ -37,13 +38,30 @@ window.onload = function() {
     
     TweenMax.set("ul", {perspective: 400});
     
-    for(var i = 0; i< li.length; i++){
-        TweenMax.to(li[i], 2.5, {
-            rotationY: 0,
-            delay: 2.5,
-            ease: Power3.easeInOut
-        })
-    }
+    TweenMax.set("li", { rotateY: 45 });
+
+    TweenMax.to("li", 2.5, {
+        rotateY : 0,
+        delay: 2.2,
+        ease: Power3.easeInOut
+    });
+
+    li.forEach(function(li){
+
+        li.addEventListener("mouseenter", function(e) {
+            TweenMax.to(this, 0.5, {
+                y: -20,
+                ease: Power3.easeOut
+            });
+        });
+    
+        li.addEventListener("mouseleave", function(e){
+            TweenMax.to(this, 0.5, {
+                y: 0,
+                ease: Power3.easeOut
+            });
+        });
+    });
     
     topBtn.addEventListener('click', () => {
         TweenMax.to(window, 1.5, {

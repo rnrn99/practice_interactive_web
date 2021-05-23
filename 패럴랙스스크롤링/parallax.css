@@ -56,7 +56,6 @@ section.bottom .contentWrap ul li {
   border-radius: 6px 6px 6px 6px;
   box-sizing: border-box;
   padding: 10px;
-  transform: rotateY(45deg);
   cursor: pointer;
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
@@ -81,10 +80,6 @@ section.bottom .contentWrap ul li:nth-child(3) {
 
 section.bottom .contentWrap ul li:nth-child(4) {
   background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
-}
-
-section.bottom .contentWrap ul li:hover {
-  transform: translateY(-20px);
 }
 
 section.bottom .contentWrap h2 {

@@ -55,7 +55,7 @@ section {
                     border-radius: 6px 6px 6px 6px;
                     box-sizing: border-box;
                     padding: 10px;
-                    transform: rotateY(45deg);
+                    // transform: rotateY(45deg);
                     cursor: pointer;
 
                     p {
@@ -79,9 +79,9 @@ section {
 
                     transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-                    &:hover {
-                        transform: translateY(-20px);
-                    }
+                    // &:hover {
+                    //     transform: translateY(-20px);
+                    // }
                 }
             }
 
